@@ -9,6 +9,7 @@ import { BusquedaService } from '../servicios/busqueda.service';
 export class HomePage {
   resultados: any[] = [];
   codigoBusqueda: string = '';
+  nuevoEstado: string = '';
 
   constructor(private busquedaService: BusquedaService) {}
   buscar() {
@@ -27,5 +28,16 @@ export class HomePage {
           }
         );
     }
+  }
+  cambiarEstado(codigo: string, nuevoEstado: string) {
+    this.busquedaService.cambiarEstado(codigo, nuevoEstado)
+      .subscribe(
+        () => {
+          console.log('Estado cambiado con éxito');
+        },
+        (error) => {
+          console.error('Error al cambiar el estado:', error);
+        }
+      );
   }
 }

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Reemplazar Estado de Pedido
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Código del Pedido</ion-label>
+    <ion-input [(ngModel)]="codigoPedido"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nuevo Estado</ion-label>
+    <ion-input [(ngModel)]="nuevoEstado"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="reemplazarEstado()">Reemplazar Estado</ion-button>
+
+  <ion-list *ngIf="respuesta">
+    <ion-item>
+      <ion-label>Código: {{ respuesta.codigo }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Estado Actualizado: {{ respuesta.estado }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -15,7 +15,62 @@
 
   <ion-list>
     <ion-item *ngFor="let resultado of resultados">
-      {{ resultado | json }}
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>Código:</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label>{{ resultado.codigo }}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label>Nombre:</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label>{{ resultado.nombre }}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label>Dirección de origen:</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label>{{ resultado.direccion_origen }}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label>Dirección de destino:</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label>{{ resultado.direccion_destino }}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label>Estado:</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label>{{ resultado.estado }}</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item>
-  </ion-list>
-</ion-content>
+    
+    <div style="margin-left: 1%; margin-top: 5%;">
+      <form (ngSubmit)="cambiarEstado(codigoBusqueda, nuevoEstado)">
+        <div class="form-group">
+          <ion-select label="Estado" label-placement="floating" fill="outline" [(ngModel)]="nuevoEstado" name="estado">
+            <ion-select-option value="Preparacion">Preparacion</ion-select-option>
+            <ion-select-option value="Envio">Envio</ion-select-option>
+            <ion-select-option value="Entrega">Entrega</ion-select-option>
+          </ion-select>
+        </div>
+        <ion-button expand="full" type="submit">Guardar</ion-button>
+      </form>
+    </div>
+    
+    
+
